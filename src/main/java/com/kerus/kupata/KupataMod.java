@@ -1,5 +1,6 @@
 package com.kerus.kupata;
 
+import com.kerus.kupata.core.registry.KBlocks;
 import com.kerus.kupata.core.registry.KCreativeTabs;
 import com.kerus.kupata.core.registry.KItems;
 import net.minecraft.client.Minecraft;
@@ -28,6 +29,7 @@ public class KupataMod {
         modEventBus.addListener(this::commonSetup);
 
         KItems.register(modEventBus);
+        KBlocks.register(modEventBus);
         KCreativeTabs.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
