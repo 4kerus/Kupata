@@ -1,5 +1,6 @@
 package com.kerus.kupata;
 
+import com.kerus.kupata.core.registry.KItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.Blocks;
@@ -24,6 +25,8 @@ public class KupataMod {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         modEventBus.addListener(this::commonSetup);
+
+        KItems.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
