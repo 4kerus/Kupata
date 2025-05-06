@@ -1,5 +1,6 @@
 package com.kerus.kupata;
 
+import com.kerus.kupata.core.registry.KCreativeTabs;
 import com.kerus.kupata.core.registry.KItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -25,20 +26,14 @@ public class KupataMod {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         modEventBus.addListener(this::commonSetup);
-        modEventBus.addListener(this::addCreative);
 
         KItems.register(modEventBus);
+        KCreativeTabs.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-    }
-
-    private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if(event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
-            event.accept(KItems.KUPATA.get());
-        }
     }
 
     @SubscribeEvent
