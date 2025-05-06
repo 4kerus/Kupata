@@ -25,6 +25,7 @@ public class KupataMod {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(this::addCreative);
 
         KItems.register(modEventBus);
 
@@ -32,6 +33,12 @@ public class KupataMod {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
+    }
+
+    private void addCreative(BuildCreativeModeTabContentsEvent event) {
+        if(event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
+            event.accept(KItems.KUPATA.get());
+        }
     }
 
     @SubscribeEvent
