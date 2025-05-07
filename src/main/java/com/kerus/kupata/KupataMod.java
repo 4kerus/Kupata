@@ -1,5 +1,6 @@
 package com.kerus.kupata;
 
+import com.kerus.kupata.commands.StartGameCommand;
 import com.kerus.kupata.core.registry.KBlocks;
 import com.kerus.kupata.core.registry.KCreativeTabs;
 import com.kerus.kupata.core.registry.KItems;
@@ -9,6 +10,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -40,6 +42,14 @@ public class KupataMod {
 
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
+    }
+
+    @Mod.EventBusSubscriber(modid = KupataMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+    public static class ServerModEvents {
+        @SubscribeEvent
+        public static void onRegisterCommands(RegisterCommandsEvent event) {
+            StartGameCommand.register(event.getDispatcher());
+        }
     }
 
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
