@@ -18,6 +18,7 @@ public class KCreativeTabs {
             .title(Component.translatable("creative_tab.kupatamod.kupata_tab"))
             .displayItems((parameters, output) -> {
                 output.accept(KItems.KUPATA.get());
+                output.accept(KBlocks.KUPATA_BLOCK.get());
             }).build());
 
     public static void register(IEventBus bus) {
